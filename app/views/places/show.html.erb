@@ -4,6 +4,19 @@
   <br /><br />
   <p><%= @place.description %></p>
 
+  <div class="col-xs-10 col-xs-offset-1"
+<h2 class="pull-left">Photos</h2>
+
+<% @place.photos.each do |photo| %>
+  <div>
+    <blockquote>
+      <b><%= photo.caption %></b>
+    </blockquote>
+  </div>
+<% end %>
+</div>
+<div class="clear"></div>
+
 
 <% if @place.latitude.present? && @place.longitude.present? %>
 
@@ -85,4 +98,10 @@
       <small><%= comment.user.email %></small>
     </blockquote>
   </div>
+<% end %>
+
+<div class="clear"></div>
+<%= simple_form_for @photo, url: place_photos_path(@place) do |p| %>
+  <%= p.input :caption %>
+  <%= p.submit "Upload a Photo", class: 'btn btn-primary' %>
 <% end %>

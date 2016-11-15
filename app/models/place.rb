@@ -6,4 +6,5 @@ class Place < ActiveRecord::Base
   validates :name, length: { minimum: 4, too_short: "Minimum is %{count} characters" }, presence: true
   validates :description, presence: true
   validates :address, presence: true
+  has_many :photos
 end
