@@ -43,8 +43,8 @@ class PlacesController < ApplicationController
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
+    end
   end
-
   def destroy
     @place = Place.find(params[:id])
     if @place.user != current_user
@@ -59,5 +59,4 @@ class PlacesController < ApplicationController
   def place_params
     params.require(:place).permit(:name, :description, :address)
   end
-end
 end
